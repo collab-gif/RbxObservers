@@ -52,7 +52,7 @@ local function observePlayer(callback: Callback): () -> ()
 		if inflight[player] then
 			inflight[player] = exitReason
 		end
-		
+
 		local cleanup = cleanupsPerPlayer[player]
 		cleanupsPerPlayer[player] = nil
 		if typeof(cleanup) == "function" then
