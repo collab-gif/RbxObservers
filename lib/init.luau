@@ -12,4 +12,5 @@ return {
 	observeProperty = require(script.observeProperty),
 	observePlayer = require(script.observePlayer),
 	observeCharacter = require(script.observeCharacter),
+	observeLocalCharacter = require(script.observeLocalCharacter),
 }

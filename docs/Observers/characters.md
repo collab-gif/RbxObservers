@@ -28,3 +28,12 @@ Observers.observeCharacter(function(player, character)
 	end
 end)
 ```
+
+There are scenarios where you only want to observe characters from a select list of players.
+This can be done by providing a list of players as the final argument to `observeCharater`:
+
+```lua
+Observers.observeCharacter(function(player, character)
+	...
+end, { somePlayer, anotherPlayer }) -- Only observe characters from 'somePlayer' and 'anotherPlayer'
+```

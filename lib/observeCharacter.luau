@@ -19,9 +19,22 @@ type Callback = (player: Player, character: Model) -> (() -> ())?
 		end
 	end)
 	```
+
+	An optional `allowedPlayers` array can be provided. Only characters
+	belonging to players in the array are observed.
+
+	```lua
+	observeCharacter(function(player, character)
+		-- ...
+	end, { somePlayer, anotherPlayer })
+	```
 ]=]
-local function observeCharacter(callback: Callback): () -> ()
+local function observeCharacter(callback: Callback, allowedPlayers: { Player }?): () -> ()
 	return observePlayer(function(player)
+		if allowedPlayers ~= nil and not table.find(allowedPlayers, player) then
+			return nil
+		end
+
 		local cleanupFn: (() -> ())? = nil
 
 		local characterAddedConn: RBXScriptConnection
